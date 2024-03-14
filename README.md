@@ -30,7 +30,7 @@ Install Python and Pip
 ```bash
 sudo apt-get install python3 python3-pip
 ```
-#### Install Dependencies for Live Test
+#### Install Dependencies
 ```bash
 pip3 install scikit-build
 ```
