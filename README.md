@@ -22,6 +22,39 @@ The training code for the models is provided in Jupyter Notebooks:
 
 ## Setup and Usage
 
+### Installation
+```bash
+sudo apt-get update && sudo apt-get upgrade -y
+```
+Install Python and Pip
+```bash
+sudo apt-get install python3 python3-pip
+```
+#### Install Dependencies
+```bash
+pip3 install scikit-build
+```
+```bash
+pip3 install opencv-contrib-python
+```
+
+Now, you need to install tflite interpreter.
+
+You do not need full tensorflow to just run the tflite interpreter.
+The package tflite_runtime only contains the Interpreter class which is what we need.
+It can be accessed by tflite_runtime.interpreter.Interpreter.
+To install the tflite_runtime package, just download the Python wheel
+that is suitable for the Python version running on your Jetson.
+
+Check Python version
+
+```bash
+python3 --version
+```
+Download the appropriate version of python from [Google Coral Tflite](https://github.com/google-coral/pycoral/releases/).
+
+for Python 3.6, download:  pycoral-2.0.0-cp36-cp36m-linux_x86_64.whl (This is what I used)
+
 ### Training
 
 The models were initially trained using Google Colab Pro with an A100 GPU for optimal performance. To retrain the models or train new ones, you can follow the steps outlined in the Jupyter Notebooks. Make sure to have a Google Colab Pro account for access to A100 runtime.
