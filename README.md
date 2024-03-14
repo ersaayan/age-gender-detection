@@ -53,7 +53,7 @@ python3 --version
 ```
 Download the appropriate version of python from [Google Coral Tflite](https://github.com/google-coral/pycoral/releases/).
 
-for Python 3.6, download:  pycoral-2.0.0-cp36-cp36m-linux_x86_64.whl (This is what I used)
+for Python 3.6, download: tflite_runtime-2.5.0.post1-cp36-cp36m-linux_x86_64.whl (This is what I used)
 
 ### Training
 
