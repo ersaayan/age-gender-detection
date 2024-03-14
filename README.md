@@ -1,42 +1,62 @@
-# Age, Gender, and Emotion Prediction Models
 
-This repository contains the training code and implementation for age, gender, and emotion prediction models, specifically designed to run on NVIDIA Jetson Nano with a Raspberry Pi camera module for real-time applications. The training scripts are provided in Jupyter Notebook (.ipynb) format, and the live inference script is written in Python (.py).
+# Age, Gender, and Emotion Detection
 
-## Project Overview
+This repository hosts a collection of models and scripts designed for age, gender, and emotion detection, utilizing deep learning. The models are trained on the UTKFace dataset for age and gender prediction, and on the FER2013 dataset for emotion detection. The project is set up to run live tests with a Raspberry Pi camera on an Nvidia Jetson Nano, showcasing real-time detection capabilities.
 
-The project includes two separate models: one for predicting age and gender, and another for predicting emotions. These models were trained on distinct datasets to achieve the best performance in their respective tasks. The real-time application runs on NVIDIA Jetson Nano, utilizing a Raspberry Pi camera module to capture video streams for prediction.
+## Datasets Used
 
-### Age and Gender Prediction Model
+- **Age and Gender Detection**: [UTKFace dataset](https://www.kaggle.com/code/eward96/age-and-gender-prediction-on-utkface)
+- **Emotion Detection**: [FER2013 dataset](https://www.kaggle.com/datasets/msambare/fer2013)
 
-- **Dataset**: The model was trained using the [UTKFace dataset](https://www.kaggle.com/code/eward96/age-and-gender-prediction-on-utkface), which is widely recognized for its diverse set of face images annotated with age and gender. This dataset provides a solid foundation for developing accurate age and gender prediction models.
-- **Training Notebook**: Included in the repository is the Jupyter Notebook used for training the age and gender prediction model, outlining the model architecture, training process, and evaluation.
+## Notebooks
 
-### Emotion Prediction Model
+The training code for the models is provided in Jupyter Notebooks:
 
-- **Dataset**: Training for the emotion prediction model was conducted using the [FER2013 dataset](https://www.kaggle.com/datasets/msambare/fer2013), which contains facial expressions categorized into several emotions. This dataset is instrumental in creating models capable of understanding and predicting human emotions based on facial expressions.
-- **Training Notebook**: The repository also includes the Jupyter Notebook for the emotion prediction model's training, detailing the dataset preprocessing, model architecture, training strategy, and performance metrics.
+- `keras_to_tflite.ipynb`: Converts Keras models to TensorFlow Lite format for efficient deployment on edge devices.
+- `train_age_gender.ipynb`: Training script for the age and gender detection model.
+- `train_emotion.ipynb`: Training script for the emotion detection model.
 
-## Real-time Application
+## Live Testing Script
 
-The real-time application is designed to run on NVIDIA Jetson Nano, utilizing a Raspberry Pi camera module to capture live video feed. The script processes the video stream, applying the age, gender, and emotion prediction models to detect and predict these attributes in real-time.
+- `live.py`: A Python script for running live tests with the Raspberry Pi camera on an Nvidia Jetson Nano. This script utilizes the TensorFlow Lite models for real-time detection.
 
-## Setup and Installation
+## Setup and Usage
 
-Instructions on setting up the NVIDIA Jetson Nano, connecting the Raspberry Pi camera, and running the real-time prediction script are provided. Ensure that all dependencies are installed, and the environment is properly configured before attempting to run the application.
+### Training
 
-## Usage
+The models were initially trained using Google Colab Pro with an A100 GPU for optimal performance. To retrain the models or train new ones, you can follow the steps outlined in the Jupyter Notebooks. Make sure to have a Google Colab Pro account for access to A100 runtime.
 
-Details on how to use the real-time application, including command-line arguments and options, are outlined. This section provides clear instructions on starting the video stream and interacting with the prediction models.
+### Conversion to TensorFlow Lite
 
-## Contributing
+The `keras_to_tflite.ipynb` notebook includes detailed steps for converting the trained Keras models to TensorFlow Lite format. This conversion is crucial for deploying the models on edge devices like the Nvidia Jetson Nano.
 
-We welcome contributions to this project! Whether it's improving the models, enhancing the real-time application, or fixing bugs, please feel free to fork the repository and submit a pull request.
+### Running on Nvidia Jetson Nano
+
+To run the models on an Nvidia Jetson Nano, you'll need to set up TensorFlow Lite. Follow these steps for installation:
+
+1. Ensure that your Jetson Nano is updated and running the latest version of its operating system.
+2. Install TensorFlow Lite by following the official TensorFlow guide for ARM64-based devices. This may involve downloading the TensorFlow Lite runtime and setting up the environment accordingly.
+
+### Live Detection
+
+To start live detection, ensure your Raspberry Pi camera is correctly connected to your Nvidia Jetson Nano. Then, execute the `live.py` script:
+
+```bash
+python live.py
+```
+
+This will activate the camera and start the age, gender, and emotion detection in real-time.
 
 ## License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Acknowledgments
 
-- Thanks to the creators of the UTKFace and FER2013 datasets for providing the data necessary for training our models.
-- This project would not have been possible without the support and resources provided by the NVIDIA Jetson Nano community and the developers of the Raspberry Pi camera module.
+- Age and Gender Prediction Model trained on [UTKFace dataset](https://www.kaggle.com/code/eward96/age-and-gender-prediction-on-utkface).
+- Emotion Detection Model trained on [FER2013 dataset](https://www.kaggle.com/datasets/msambare/fer2013).
+- Models trained using Google Colab Pro's A100 runtime for optimal performance.
+
+---
+
+For more information, visit the project repository: [Age, Gender, and Emotion Detection](https://github.com/ersaayan/age-gender-detection/tree/main).
