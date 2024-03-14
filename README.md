@@ -13,12 +13,16 @@ This repository hosts a collection of models and scripts designed for age, gende
 The training code for the models is provided in Jupyter Notebooks:
 
 - `keras_to_tflite.ipynb`: Converts Keras models to TensorFlow Lite format for efficient deployment on edge devices.
+
 - `train_age_gender.ipynb`: Training script for the age and gender detection model.
+
 - `train_emotion.ipynb`: Training script for the emotion detection model.
 
 ## Live Testing Script
 
 - `live.py`: A Python script for running live tests with the Raspberry Pi camera on an Nvidia Jetson Nano. This script utilizes the TensorFlow Lite models for real-time detection.
+
+- `pre-trained-models` The pre-trained models are located in the pre-trained-models folder. You can use it directly and try it out.
 
 ## Setup and Usage
 
