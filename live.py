@@ -87,7 +87,7 @@ while True:
     faces=face_classifier.detectMultiScale(gray,1.3,5)
     start = time.time()
 
-    for (x,y,w,h) in faces:
+    """ for (x,y,w,h) in faces:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray=gray[y:y+h,x:x+w]
         roi_gray=cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
@@ -108,7 +108,7 @@ while True:
 
         
         
-        """ roi_color=frame[y:y+h,x:x+w]
+        roi_color=frame[y:y+h,x:x+w]
         roi_color=cv2.resize(roi_color,(200,200),interpolation=cv2.INTER_AREA)
         roi_color = np.array(roi_color).reshape(-1,200,200,3) #input shape is (1, 200,200,3)
         roi_color = roi_color.astype(np.float32)
@@ -133,10 +133,10 @@ while True:
         #age_predict = age_model.predict(np.array(roi_color).reshape(-1,200,200,3))
         age = round(age_preds[0,0])
         age_label_position=(x+h,y+h)
-        cv2.putText(frame,"Age="+str(age),age_label_position,cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2) """
+        cv2.putText(frame,"Age="+str(age),age_label_position,cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
         
     end=time.time()
-    print("Total time=", end-start)
+    print("Total time=", end-start) """
     
     cv2.imshow('Emotion Detector', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):  #Press q to exit
