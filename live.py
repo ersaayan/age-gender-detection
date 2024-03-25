@@ -78,7 +78,7 @@ while True:
 
         
         
-        roi_color=frame[y:y+h,x:x+w]
+        """ roi_color=frame[y:y+h,x:x+w]
         roi_color=cv2.resize(roi_color,(200,200),interpolation=cv2.INTER_AREA)
         roi_color = np.array(roi_color).reshape(-1,200,200,3) #input shape is (1, 200,200,3)
         roi_color = roi_color.astype(np.float32)
@@ -103,7 +103,7 @@ while True:
         #age_predict = age_model.predict(np.array(roi_color).reshape(-1,200,200,3))
         age = round(age_preds[0,0])
         age_label_position=(x+h,y+h)
-        cv2.putText(frame,"Age="+str(age),age_label_position,cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
+        cv2.putText(frame,"Age="+str(age),age_label_position,cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2) """
         
     end=time.time()
     print("Total time=", end-start)
