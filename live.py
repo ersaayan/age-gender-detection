@@ -18,10 +18,10 @@ face_classifier=cv2.CascadeClassifier('haarcascades_models/haarcascade_frontalfa
 """emotion_interpreter = Interpreter(model_path="emotion_detection_model_100epochs_opt.tflite")
 emotion_interpreter.allocate_tensors()"""
 
-age_interpreter = Interpreter(model_path="age_detection_model_50epochs_opt.tflite")
+age_interpreter = Interpreter(model_path="./pre-trained-models/age_detection_model_100epochs_opt.tflite")
 age_interpreter.allocate_tensors()
 
-gender_interpreter = Interpreter(model_path="gender_detection_model_50epochs_opt.tflite")
+gender_interpreter = Interpreter(model_path="./pre-trained-models/gender_detection_model_100epochs_opt.tflite")
 gender_interpreter.allocate_tensors()
 
 
