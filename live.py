@@ -1,7 +1,7 @@
 
 # Since I could not use the emotion model, I took it to the comment line, you can use it by deleting the comment line.
 
-from tensorflow.keras.preprocessing.image import img_to_array #Can use cv2 or other libraries.
+# from tensorflow.keras.preprocessing.image import img_to_array #Can use cv2 or other libraries.
 import cv2
 from tflite_runtime.interpreter import Interpreter
 
@@ -64,7 +64,7 @@ while True:
 
         #Get image ready for prediction
         roi=roi_gray.astype('float')/255.0  #Scale
-        roi=img_to_array(roi)
+        #roi=img_to_array(roi)
         roi=np.expand_dims(roi,axis=0)  #Expand dims to get it ready for prediction (1, 48, 48, 1)
         
         #emotion_interpreter.set_tensor(emotion_input_details[0]['index'], roi)
