@@ -48,22 +48,23 @@ gender_input_shape = gender_input_details[0]['shape']
 gender_labels = ['Male', 'Female']
 
 def gstreamer_pipeline(
-    capture_width=640,
-    capture_height=480,
-    display_width=640,
-    display_height=480,
+    sensor_id=0,
+    capture_width=1920,
+    capture_height=1080,
+    display_width=960,
+    display_height=540,
     framerate=30,
     flip_method=0,
 ):
     return (
-        "nvarguscamerasrc ! "
-        "video/x-raw(memory:NVMM), "
-        "width=(int)%d, height=(int)%d, framerate=(fraction)%d/1 ! "
+        "nvarguscamerasrc sensor-id=%d ! "
+        "video/x-raw(memory:NVMM), width=(int)%d, height=(int)%d, framerate=(fraction)%d/1 ! "
         "nvvidconv flip-method=%d ! "
         "video/x-raw, width=(int)%d, height=(int)%d, format=(string)BGRx ! "
         "videoconvert ! "
-        "video/x-raw, format=(string)BGR ! appsink drop=True"
+        "video/x-raw, format=(string)BGR ! appsink"
         % (
+            sensor_id,
             capture_width,
             capture_height,
             framerate,
@@ -74,10 +75,8 @@ def gstreamer_pipeline(
     )
 
 
-#cap=cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
 
-cap = cv2.VideoCapture("nvarguscamerasrc ! video/x-raw(memory:NVMM), width=(int)1280, height=(int)720, format=(string)NV12, framerate=(fraction)30/1 ! nvvidconv ! video/x-raw, format=(string)BGRx ! videoconvert ! video/x-raw, format=(string)BGR ! appsink")
-
+cap=cv2.VideoCapture(gstreamer_pipeline(flip_method=0), cv2.CAP_GSTREAMER)
 
 while True:
     ret,frame=cap.read()
@@ -87,7 +86,7 @@ while True:
     faces=face_classifier.detectMultiScale(gray,1.3,5)
     start = time.time()
 
-    """ for (x,y,w,h) in faces:
+    for (x,y,w,h) in faces:
         cv2.rectangle(frame,(x,y),(x+w,y+h),(255,0,0),2)
         roi_gray=gray[y:y+h,x:x+w]
         roi_gray=cv2.resize(roi_gray,(48,48),interpolation=cv2.INTER_AREA)
@@ -136,7 +135,7 @@ while True:
         cv2.putText(frame,"Age="+str(age),age_label_position,cv2.FONT_HERSHEY_SIMPLEX,1,(0,255,0),2)
         
     end=time.time()
-    print("Total time=", end-start) """
+    print("Total time=", end-start)
     
     cv2.imshow('Emotion Detector', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):  #Press q to exit
